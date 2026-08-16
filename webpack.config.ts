@@ -20,6 +20,27 @@ import WebpackObfuscator from 'webpack-obfuscator';
 const require = createRequire(import.meta.url);
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 
+// webpack 5 ESM output 下 `__webpack_require__` 未被声明（vue-loader CJS helper 需要它），
+// 在产物 HTML 中注入空对象声明以避免 ReferenceError
+const FixWebpackRequirePlugin = {
+  apply(compiler: webpack.Compiler) {
+    compiler.hooks.thisCompilation.tap('FixWebpackRequire', compilation => {
+      compilation.hooks.processAssets.tap({ name: 'FixWebpackRequire', stage: webpack.Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE }, () => {
+        const marker = "import{createPinia as a,defineStore as t}from'https://testingcf.jsdelivr.net/npm/pinia@3.0.4/+esm';";
+        const decl = 'var __webpack_require__=__webpack_require__||{};';
+        for (const filename of Object.keys(compilation.assets)) {
+          if (!filename.endsWith('.html')) continue;
+          const source = compilation.assets[filename].source().toString();
+          if (!source.includes('var __webpack_require__') && source.includes(marker)) {
+            const fixed = source.replace(marker, marker + decl);
+            compilation.assets[filename] = new webpack.sources.RawSource(fixed);
+          }
+        }
+      });
+    });
+  },
+};
+
 interface Config {
   port: number;
   entries: Entry[];
@@ -463,6 +484,7 @@ function parse_configuration(entry: Entry): (_env: any, argv: any) => webpack.Co
           resolvers: [VueUseComponentsResolver(), VueUseDirectiveResolver()],
         }),
         new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+        FixWebpackRequirePlugin,
         new webpack.DefinePlugin({
           __VUE_OPTIONS_API__: false,
           __VUE_PROD_DEVTOOLS__: process.env.CI !== 'true',
