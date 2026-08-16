@@ -35,6 +35,8 @@ jobs:
           version: 10
 
       - run: pnpm install && pnpm build
+      - name: Postbuild - inject __webpack_require__ declaration
+        run: node postbuild.mjs
       - name: Only keep 角色卡示例 in dist for template upstream
         if: github.repository == 'StageDog/tavern_helper_template'
         run: |
