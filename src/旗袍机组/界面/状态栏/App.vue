@@ -21,7 +21,6 @@ const crew = ['沈静姝', '苏含烟', '江雪', '顾知秋', '江如歌'] as c
       :key="name"
       :name="name"
       :data="stat[name]"
-      is-locked
     />
 
     <CharacterRow
@@ -33,22 +32,22 @@ const crew = ['沈静姝', '苏含烟', '江雪', '顾知秋', '江如歌'] as c
 
 <style lang="scss" scoped>
 .status-bar {
-  max-width: 720px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 8px;
+  padding: 12px;
   background: var(--c-background);
   border: 1px solid var(--c-primary);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .world-bar {
   display: flex;
-  gap: 14px;
-  padding: 4px 8px 8px;
-  font-size: 12px;
+  gap: 20px;
+  padding: 4px 8px 10px;
+  font-size: 14px;
   color: var(--c-text-muted);
   border-bottom: 1px dashed var(--c-border);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 </style>
