@@ -11,3 +11,6 @@ pnpm-debug.log*
 
 auto-imports.d.ts
 components.d.ts
+
+# 本地构建辅助（node22 下 webpack-cli 加载 TS config 的 workaround）
+build-statusbar.mjs
