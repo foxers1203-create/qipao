@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "世界": {
+      "type": "object",
+      "properties": {
+        "当前时间": {
+          "type": "string"
+        },
+        "当前地点": {
+          "type": "string"
+        },
+        "航班状态": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "当前时间",
+        "当前地点",
+        "航班状态"
+      ]
+    },
+    "沈静姝": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "苏含烟": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "江雪": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "顾知秋": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "江如歌": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "虞栖梧": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "性欲值": {
+          "type": "number"
+        },
+        "衣着": {
+          "type": "string"
+        },
+        "内衣": {
+          "type": "string"
+        },
+        "身体状态": {
+          "$ref": "#/$defs/__schema1"
+        }
+      },
+      "required": [
+        "好感度",
+        "性欲值",
+        "衣着",
+        "内衣",
+        "身体状态"
+      ]
+    }
+  },
+  "required": [
+    "世界",
+    "沈静姝",
+    "苏含烟",
+    "江雪",
+    "顾知秋",
+    "江如歌",
+    "虞栖梧"
+  ],
+  "$defs": {
+    "__schema0": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "性欲值": {
+          "type": "number"
+        },
+        "衣着": {
+          "type": "string"
+        },
+        "内衣": {
+          "type": "string"
+        },
+        "身体状态": {
+          "$ref": "#/$defs/__schema1"
+        }
+      },
+      "required": [
+        "好感度",
+        "性欲值",
+        "衣着",
+        "内衣",
+        "身体状态"
+      ]
+    },
+    "__schema1": {
+      "type": "string",
+      "enum": [
+        "常态",
+        "情动",
+        "娇喘",
+        "高潮余韵",
+        "熟睡"
+      ]
+    }
+  }
+}
