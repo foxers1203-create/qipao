@@ -220,6 +220,7 @@ function parse_configuration(entry: Entry): (_env: any, argv: any) => webpack.Co
       asyncChunks: true,
       clean: true,
       publicPath: '',
+      chunkFormat: 'module',
       library: {
         type: 'module',
       },
