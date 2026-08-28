@@ -65,7 +65,11 @@
     "tslib": "^2.8.1",
     "tsx": "^4.23.12",
     "type-fest": "^5.8.0",
+<<<<<<< HEAD
     "typescript": "5.9.3",
+=======
+    "typescript": "6.0.3",
+>>>>>>> fd8153baf11ced5360854b92fb17395299e83151
     "typescript-eslint": "^8.68.0",
     "unplugin-auto-import": "^21.1.0",
     "unplugin-vue-components": "^32.1.0",
